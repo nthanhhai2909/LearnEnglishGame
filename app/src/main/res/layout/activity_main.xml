@@ -22,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:background="@drawable/backroound1"
-        android:layout_margin="20dp"
+        android:background="@drawable/background"
+        android:layout_marginTop="1dp"
         >
     </LinearLayout>
 
@@ -31,7 +31,7 @@
         android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="4"
         android:weightSum="2"
         android:orientation="vertical"
         >
@@ -43,8 +43,9 @@
             android:layout_weight="1"
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
-            android:text="Start Learn English"
+            android:text="Chơi mới"
             android:textAllCaps="false"
+            android:textSize="20sp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:background="#006064"
@@ -58,7 +59,8 @@
             android:layout_weight="1"
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
-            android:text="Setting"
+            android:textSize="20sp"
+            android:text="Tiếp Tục"
             android:layout_marginTop="30dp"
             android:textAllCaps="false"
             android:fontFamily="sans-serif-condensed"
