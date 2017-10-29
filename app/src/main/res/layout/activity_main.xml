@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#B2DFDB"
+    android:weightSum="10">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_mainactivity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:titleTextColor="#FAFAFA"
+        android:background="#004D40"
+        app:title="English Game"
+        >
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@drawable/backroound1"
+        android:layout_margin="20dp"
+        >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:weightSum="2"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/button_newgame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:text="Start Learn English"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:background="#006064"
+            android:layout_gravity="center"
+            />
+
+        <Button
+            android:id="@+id/button_setting"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:text="Setting"
+            android:layout_marginTop="30dp"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:background="#006064"
+            android:layout_gravity="center"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
