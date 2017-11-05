@@ -1,10 +1,13 @@
 package com.example.nthan.learnenglishgame.View;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.nthan.learnenglishgame.Model.Dictionary;
 import com.example.nthan.learnenglishgame.Model.Word;
@@ -12,8 +15,11 @@ import com.example.nthan.learnenglishgame.Presenter.DictionaryPresenter;
 import com.example.nthan.learnenglishgame.Presenter.RandomPresenter;
 import com.example.nthan.learnenglishgame.R;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PlayGameActivity extends AppCompatActivity {
 
@@ -35,6 +41,7 @@ public class PlayGameActivity extends AppCompatActivity {
     private DictionaryPresenter dictionaryPresenter;
     private List<Word> listData;
     private Toolbar toolbar;
+    private TextView textViewTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,15 +52,27 @@ public class PlayGameActivity extends AppCompatActivity {
 
         toolbar = (Toolbar)findViewById(R.id.toolbar_playgameactivity);
         setSupportActionBar(toolbar);
-        listData = dictionaryPresenter.loadData();
+        textViewTime = (TextView)findViewById(R.id.textview_time);
+        //listData = dictionaryPresenter.loadData();
         randomPresenter = new RandomPresenter(this);
         Bundle bundle = this.getIntent().getExtras();
         max = getLevelGame(bundle);
+        playGame();
     }
-
     public void playGame(){
-
-
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            int mytime = 21;
+            @Override
+            public void run() {
+                mytime--;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textViewTime.setText(String.valueOf(mytime));
+                    }
+                });
+            }
+        }, 1000, 1000);
     }
 
     public int getLevelGame(Bundle bundle){
