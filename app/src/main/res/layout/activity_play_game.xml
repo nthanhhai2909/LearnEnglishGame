@@ -23,7 +23,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2" 
+        android:layout_weight="1"
         android:layout_marginTop="1dp"
         android:orientation="horizontal"
         android:background="#E0F2F1"
@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Thời gian: "
+            android:text="Time: "
             android:fontFamily="sans-serif-condensed"
             android:textSize="20sp"
             android:gravity="center"
@@ -59,7 +59,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="1"
         android:weightSum="10"
         android:layout_marginTop="1dp"
         android:background="#E0F2F1"
@@ -70,7 +70,7 @@
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="2"
-            android:text="Từ"
+            android:text="Word"
             android:fontFamily="sans-serif-condensed"
             android:textSize="20sp"
             android:layout_marginRight="1dp"
@@ -92,14 +92,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:text="Đáp án"
+        android:layout_weight="1"
+        android:text="Answer"
         android:gravity="center"
         android:textSize="30sp"
         android:fontFamily="sans-serif-condensed"
         android:layout_marginTop="1dp"
         android:background="#E0F2F1"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="5dp"
 
         />
 
@@ -107,7 +107,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:weightSum="10"
         android:background="#E0F2F1"
@@ -138,7 +138,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:weightSum="10"
         android:background="#E0F2F1"
@@ -168,7 +168,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:weightSum="10"
         android:background="#E0F2F1"
