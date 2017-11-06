@@ -27,14 +27,15 @@
         android:layout_marginTop="1dp"
         android:orientation="horizontal"
         android:background="#E0F2F1"
-        android:weightSum="2"
+        android:weightSum="10"
         >
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="Time: "
+            android:layout_marginRight="1dp"
             android:fontFamily="sans-serif-condensed"
             android:textSize="20sp"
             android:gravity="center"
@@ -45,7 +46,7 @@
             android:id="@+id/textview_time"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="8"
             android:fontFamily="sans-serif-condensed"
             android:hint="counttime"
             android:gravity="center"
@@ -88,7 +89,7 @@
             android:gravity="center">
         </TextView>
     </LinearLayout>
-\
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -105,9 +106,10 @@
 
 
     <LinearLayout
+        android:id="@+id/linear_check_a"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="10"
         android:background="#E0F2F1"
@@ -119,30 +121,31 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:src="@drawable/uncheck"
             android:gravity="center"
-            android:background="#E0F2F1"
+            android:background="@drawable/uncheck"
             android:layout_marginRight="20dp"
             />
+
+
         <TextView
             android:id="@+id/textview_result_a"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="8"
-            android:textSize="20dp"
             android:hint="context A"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"/>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear_check_b"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="10"
         android:background="#E0F2F1"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="5dp"
         >
 
         <ImageButton
@@ -151,28 +154,27 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:gravity="center"
-            android:background="#E0F2F1"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/uncheck"/>
+            android:background="@drawable/uncheck"
+            android:layout_marginRight="20dp" />
         <TextView
             android:id="@+id/textview_result_b"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="8"
-            android:textSize="20dp"
             android:hint="context B"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"/>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear_check_c"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="10"
         android:background="#E0F2F1"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="5dp"
         >
 
         <ImageButton
@@ -180,8 +182,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:background="#E0F2F1"
-            android:src="@drawable/uncheck"
+            android:background="@drawable/uncheck"
             android:layout_marginRight="20dp"
 
             android:gravity="center"
@@ -192,22 +193,18 @@
             android:layout_height="match_parent"
             android:layout_weight="8"
             android:hint="context C"
-            android:textSize="20dp"
             android:gravity="center"/>
     </LinearLayout>
-
-    <LinearLayout
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_marginTop="1dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif-condensed"
-        android:weightSum="10"
-        android:orientation="horizontal"
-        >
+        android:layout_weight="1"
+        android:textAllCaps="false"
+        android:text="OK"
+        android:background="#33691E"/>
 
-
-    </LinearLayout>
 
 
 

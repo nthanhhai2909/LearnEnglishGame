@@ -23,6 +23,7 @@ import com.example.nthan.learnenglishgame.Presenter.DictionaryPresenter;
 import com.example.nthan.learnenglishgame.Presenter.RandomPresenter;
 import com.example.nthan.learnenglishgame.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
@@ -32,9 +33,8 @@ public class MainActivity extends AppCompatActivity{
     private Button btnSetting;
     private Button btnContinue;
     private EditText test;
-    private RandomPresenter randomPresenter;
     private DictionaryPresenter dictionaryPresenter;
-
+    public static List<Word> listData;
     public final static int LEVEL_ONE = 1000;
     public final static int LEVEL_TWO = 1000;
     public final static int LEVEL_THREE = 1000;
@@ -55,7 +55,9 @@ public class MainActivity extends AppCompatActivity{
         //------------------------------------------------------------------------------------------
         toolbar = (Toolbar)findViewById(R.id.toolbar_mainactivity);
         setSupportActionBar(toolbar);
-
+        listData = new ArrayList<>();
+        dictionaryPresenter = new DictionaryPresenter(this);
+        listData = dictionaryPresenter.loadData();
         btnNewGame = (Button)findViewById(R.id.button_newgame);
         btnSetting = (Button)findViewById(R.id.button_setting);
         btnContinue = (Button)findViewById(R.id.button_continue);

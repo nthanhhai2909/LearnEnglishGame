@@ -34,7 +34,6 @@ public class Dictionary {
             if(inputStream != null){
                 List<String> listRawData = new ArrayList<>();
                 String temp = "";
-                ;
                 while ((line = bufferedReader.readLine()) != null){
                     if(line.length() > 0){
                         if(line.charAt(0) == '@'){
