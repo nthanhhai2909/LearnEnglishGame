@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,93 +23,102 @@ public class Dictionary {
         this.context = context;
     }
 
-    public List<Word> loadDatabase(){
-        List<Word> list = new ArrayList<>();
-        String line = "";
-        InputStream inputStream = null;
-        BufferedReader bufferedReader = null;
-        try{
-            inputStream = context.getAssets().open("data.txt");
-            bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF8"));
 
-            if(inputStream != null){
-                List<String> listRawData = new ArrayList<>();
-                String temp = "";
-                while ((line = bufferedReader.readLine()) != null){
-                    if(line.length() > 0){
-                        if(line.charAt(0) == '@'){
-                            listRawData.add(temp);
-                            temp = "";
-                            temp += line;
-                        }
+    public List<Record> loadDatabase() {
+        List<Record> list = new ArrayList<>();
+        List<String> listDataInput = readFile();
+        Log.e("size: ", String.valueOf(listDataInput.size()));
+        list = handleDataInput(listDataInput);
+        return list;
+    }
 
-                        else{
-                            temp += line;
-                        }
+
+    public List<Record>handleDataInput(List<String> listDataInput){
+        List<Record> list = new ArrayList<>();
+        String word = "";
+        String category = "";
+        String articulation = "";
+        String meaning = "";
+        for (String element: listDataInput) {
+            if(element.length() > 0 && element.charAt(0)!= ' '){
+                String[]temp = element.split("/", 2);
+                if(temp.length > 1){
+                    word = this.handleCategory(temp[0]).get(0);
+                    category = this.handleCategory(temp[0]).get(1);
+                    temp = temp[1].split("/");
+                    if(temp.length > 1){
+                        articulation = temp[0];
+                        meaning = temp[1].trim();
                     }
                 }
-                listRawData.remove(0);
-                list = handlingWord(listRawData);
             }
-        }
-        catch (IOException e){e.printStackTrace();}
-
-        finally {
-            try{
-                inputStream.close();
-                bufferedReader.close();
-            }
-            catch (Exception e){e.printStackTrace();}
-
+            list.add(new Record(word, meaning, meaning, articulation));
         }
         return list;
     }
 
-    public List<Word> handlingWord(List<String> listRawData){
-
-        List<Word>listWord = new ArrayList<>();
-        if(!listRawData.isEmpty())
-        {
-            for(int i = 0; i < listRawData.size(); i++){
-                String[] temp = listRawData.get(i).split("\\*");
-                String[] tempW = temp[0].split("(?=/)", 2);
-                String word = tempW[0].replaceAll("@", "");
-                String articulation = "";
-                if(tempW.length > 1){
-                    articulation = tempW[1];
-                }
-                List<Record> listRecord = new ArrayList<>();
-                List<Meaning> listMeaning = new ArrayList<>();
-                List<Synonym> listSynonym = new ArrayList<>();
-
-                for(int j = 1; j < temp.length; j++){
-
-                    String[] records = temp[j].split("(?=-)");
-                    String category = records[0];
-                    for(int k = 1; k < records.length; k++){
-                        String[] meanings = records[k].split("=");
-                        String meaning = meanings[0];
-                        Log.e("mean", meaning);
-                        if(meanings.length > 1){
-                            for(int l = 1; l < meanings.length; l++){
-                                String[] synonyms = meanings[l].split("\\+", 2);
-                                if(synonyms.length > 1){
-                                    listSynonym.add(new Synonym(synonyms[0], synonyms[1]));
-                                }
-
-
-                            }
+    public List<String> handleCategory(String input){
+        // in add n. v. / sdsd//
+        List<String> list = new ArrayList<>();
+        String word = null;
+        String category = null;
+        int indexLast = input.lastIndexOf(".");
+        int indexfirst = -1;
+        if(indexLast != -1){
+            for(int i = indexLast - 1; i > 0; i --){
+                if(input.charAt(i) == '.'){
+                    for(int j = i; j >= 0; j--){
+                        if(input.charAt(j) == ' '){
+                            indexfirst = j;
                         }
-                        listMeaning.add(new Meaning(meaning, listSynonym));
-
                     }
-                    listRecord.add(new Record(category, listMeaning));
                 }
-                Log.e("size", String.valueOf(listMeaning.size()));
-                listWord.add(new Word(word,articulation,listRecord));
+            }
+            if(indexfirst == -1){
+                for(int i = indexLast; i >= 0; i--){
+                    if(input.charAt(i) == ' '){
+                        word = input.substring(0, i);
+                        category = input.substring(i, indexLast);
+                        break;
+                    }
+                }
+            }
+            else{
+                word = input.substring(0, indexfirst);
+                category = input.substring(indexfirst, indexLast);
             }
         }
+        else{
+            word = input;
+            category = "";
+        }
 
-        return  listWord;
+        list.add(word);
+        list.add(category);
+        return list;
+    }
+    public List<String> readFile(){
+        List<String> list = new ArrayList<>();
+        InputStream inputStream = null;
+        InputStreamReader inputStreamReader = null;
+        BufferedReader bufferedReader = null;
+        try{
+            inputStream = context.getAssets().open("3000_word_comom.txt");
+            inputStreamReader = new InputStreamReader(inputStream);
+            bufferedReader = new BufferedReader(inputStreamReader);
+            String line;
+            while((line = bufferedReader.readLine()) != null){
+                list.add(line);
+            }
+
+        }catch (Exception e){e.printStackTrace();}
+        finally {
+            try{
+                inputStream.close();
+                inputStreamReader.close();
+                bufferedReader.close();
+            }catch (IOException e){e.printStackTrace();}
+        }
+        return list;
     }
 }

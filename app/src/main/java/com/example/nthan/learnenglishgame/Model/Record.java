@@ -1,17 +1,36 @@
 package com.example.nthan.learnenglishgame.Model;
 
-import java.util.List;
-
 /**
- * Created by nthan on 10/31/2017.
+ * Created by nthan on 11/17/2017.
  */
 
 public class Record {
+    private String word;
     private String category;
-    private List<Meaning> meanings;
-    public Record(String category, List<Meaning> meanings) {
+    private String articulation;
+    private String meaning;
+
+    public Record(String word, String category, String meaning, String articulation) {
+        this.word = word;
+        this.articulation = articulation;
         this.category = category;
-        this.meanings = meanings;
+        this.meaning = meaning;
+    }
+
+    public String getArticulation() {
+        return articulation;
+    }
+
+    public void setArticulation(String articulation) {
+        this.articulation = articulation;
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
     }
 
     public String getCategory() {
@@ -22,12 +41,11 @@ public class Record {
         this.category = category;
     }
 
-    public List<Meaning> getMeanings() {
-        return meanings;
+    public String getMeaning() {
+        return meaning;
     }
 
-    public void setMeanings(List<Meaning> meanings) {
-        this.meanings = meanings;
+    public void setMeaning(String meaning) {
+        this.meaning = meaning;
     }
-
 }

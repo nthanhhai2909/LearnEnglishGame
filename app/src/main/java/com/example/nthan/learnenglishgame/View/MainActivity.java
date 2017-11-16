@@ -1,6 +1,5 @@
 package com.example.nthan.learnenglishgame.View;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AlertDialog;
@@ -12,15 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import com.example.nthan.learnenglishgame.Model.Dictionary;
-import com.example.nthan.learnenglishgame.Model.Word;
+import com.example.nthan.learnenglishgame.Model.Record;
 import com.example.nthan.learnenglishgame.Presenter.DictionaryPresenter;
-import com.example.nthan.learnenglishgame.Presenter.RandomPresenter;
 import com.example.nthan.learnenglishgame.R;
 
 import java.util.ArrayList;
@@ -34,17 +29,13 @@ public class MainActivity extends AppCompatActivity{
     private Button btnContinue;
     private EditText test;
     private DictionaryPresenter dictionaryPresenter;
-    public static List<Word> listData;
+    public static List<Record> listData;
     public final static int LEVEL_ONE = 1000;
-    public final static int LEVEL_TWO = 1000;
-    public final static int LEVEL_THREE = 1000;
-    public final static int LEVEL_FOUR = 1000;
-    public final static int LEVEL_FIVE = 1000;
-    public final static int LEVEL_SIX = 1000;
-    public final static int LEVEL_SEVEN = 1000;
-    public final static int LEVEL_EIGHT = 1000;
-    public final static int LEVEL_NINE = 1000;
-    public final static int LEVEL_TEN = 1000;
+    public final static int LEVEL_TWO = 1001;
+    public final static int LEVEL_THREE = 1002;
+    public final static int LEVEL_FOUR = 1003;
+    public final static int LEVEL_FIVE = 1004;
+    public final static int LEVEL_SIX = 1005;
     public static int levelGame = LEVEL_ONE;
 
     @Override
@@ -153,23 +144,6 @@ public class MainActivity extends AppCompatActivity{
                         levelGame = MainActivity.LEVEL_SIX;
                         dig.hide();
                         break;
-                    case R.id.select_level_7:
-                        levelGame = MainActivity.LEVEL_SEVEN;
-                        dig.hide();
-                        break;
-                    case R.id.select_level_8:
-                        levelGame = MainActivity.LEVEL_EIGHT;
-                        dig.hide();
-                        break;
-                    case R.id.select_level_9:
-                        levelGame = MainActivity.LEVEL_NINE;
-                        dig.hide();
-                        break;
-                    case R.id.select_level_10:
-                        levelGame = MainActivity.LEVEL_TEN;
-                        dig.hide();
-                        break;
-
                 }
             }
         });
