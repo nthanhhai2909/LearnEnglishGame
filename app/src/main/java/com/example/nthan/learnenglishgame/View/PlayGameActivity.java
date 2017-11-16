@@ -52,7 +52,7 @@ public class PlayGameActivity extends AppCompatActivity {
     private MyTimer myTimerMain;
     private int countQuestion = 0;
     private int check = -1;
-    private int resultMain;
+    private int resultMain = -2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -229,6 +229,8 @@ public class PlayGameActivity extends AppCompatActivity {
 
     public void playGame(){
 
+        this.check = -1;
+        this.resultMain = -2;
         MyTimer myTimer = new MyTimer();
         myTimer.start();
         myTimerMain = myTimer;
