@@ -22,6 +22,7 @@ import java.util.TimerTask;
 
 public class PlayGameActivity extends AppCompatActivity {
 
+
     public final  static int min = 0;
     public static int max = 0;
 
@@ -53,6 +54,7 @@ public class PlayGameActivity extends AppCompatActivity {
     private int countQuestion = 0;
     private int check = -1;
     private int resultMain = -2;
+    private  String resultisAnswer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,15 +146,17 @@ public class PlayGameActivity extends AppCompatActivity {
             displayDiaglogResultTrue();
         }
         else{
-            displayDiaglogResultFalse();
+            displayDiaglogResultFalse(this.resultisAnswer);
         }
         resetAnswer();
     }
 
-    public void displayDiaglogResultFalse(){
+    public void displayDiaglogResultFalse(String result){
+
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("RESULT");
-        alert.setMessage("You have answered wrong!!!");
+        alert.setMessage("You have answered wrong!!! " +'\n' +
+                "correct answer is: " + result);
         alert.setCancelable(false);
         alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
@@ -229,6 +233,10 @@ public class PlayGameActivity extends AppCompatActivity {
 
     public void playGame(){
 
+        if(countQuestion == 50){
+
+        }
+        countQuestion++;
         this.check = -1;
         this.resultMain = -2;
         MyTimer myTimer = new MyTimer();
@@ -244,11 +252,12 @@ public class PlayGameActivity extends AppCompatActivity {
         Record word = MainActivity.listData.get(index);
         textViewWord.setText(word.getWord() + " " + "/" + word.getArticulation() + "/");
         resultStr = word.getMeaning();
+        this.resultisAnswer = word.getMeaning();
 
         //--------------------------------------------------------------------------------------
 
         // select value true
-        int result = randomPresenter.random(min,3);
+        int result = randomPresenter.random(1, 3 + 1);
         //A select value = true
         if(result == 1){
             resultMain = CHECK_A;
